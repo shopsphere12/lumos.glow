@@ -1,286 +1,189 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Well Mart Supermarket</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Well Mart Supermarket</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
+<header>
     <div class="logo-title" onclick="window.location.reload()">
-      <img src="logo.png" alt="Well Mart Logo" />
-      <h1>Well Mart</h1>
+        <img src="logo.png" alt="Well Mart Logo" />
+        <h1>Well Mart</h1>
     </div>
     <button id="cartBtn" onclick="toggleCart()" aria-label="Toggle Cart">
-      🛒 Cart <span id="cartCount">0</span>
+        🛒 Cart <span id="cartCount">0</span>
     </button>
-  </header>
+</header>
 
-  <nav>
+<nav>
     <a href="#">Home</a>
     <a href="#">Products</a>
     <a href="#">Offers</a>
     <a href="#">Contact</a>
     <a href="#">About Us</a>
-  </nav>
+</nav>
 
-  <section class="hero">
+<section class="hero">
     <h2>Welcome to Well Mart!</h2>
     <p>Your one-stop shop for all your grocery needs.</p>
-  </section>
+</section>
 
-  <div class="search-bar">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Search for products..."
-      onkeyup="searchProducts()"
-      aria-label="Search products"
-    />
-  </div>
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="searchProducts()" />
+</div>
 
-  <section class="products" id="productList" aria-live="polite" aria-atomic="true">
+<section class="products" id="productList">
     <div class="product-card" tabindex="0">
-      <img src="https://via.placeholder.com/200x150?text=Fruits" alt="Fresh Fruits" />
-      <h3>Fresh Fruits</h3>
-      <p>Healthy and delicious seasonal fruits.</p>
-      <button onclick="addToCart('Fresh Fruits')">Add to Cart</button>
+        <img src="https://via.placeholder.com/200x150?text=Fruits" alt="Fresh Fruits" />
+        <h3>Fresh Fruits</h3>
+        <p>Healthy and delicious seasonal fruits.</p>
+        <p class="price">₹100</p>
+        <button onclick="addToCart('Fresh Fruits', 100)">Add to Cart</button>
     </div>
     <div class="product-card" tabindex="0">
-      <img src="https://via.placeholder.com/200x150?text=Vegetables" alt="Vegetables" />
-      <h3>Vegetables</h3>
-      <p>Locally sourced organic vegetables.</p>
-      <button onclick="addToCart('Vegetables')">Add to Cart</button>
+        <img src="https://via.placeholder.com/200x150?text=Vegetables" alt="Vegetables" />
+        <h3>Vegetables</h3>
+        <p>Locally sourced organic vegetables.</p>
+        <p class="price">₹80</p>
+        <button onclick="addToCart('Vegetables', 80)">Add to Cart</button>
     </div>
     <div class="product-card" tabindex="0">
-      <img src="https://via.placeholder.com/200x150?text=Beverages" alt="Beverages" />
-      <h3>Beverages</h3>
-      <p>Refreshing drinks and juices for all occasions.</p>
-      <button onclick="addToCart('Beverages')">Add to Cart</button>
+        <img src="https://via.placeholder.com/200x150?text=Beverages" alt="Beverages" />
+        <h3>Beverages</h3>
+        <p>Refreshing drinks and juices for all occasions.</p>
+        <p class="price">₹60</p>
+        <button onclick="addToCart('Beverages', 60)">Add to Cart</button>
     </div>
-    <div class="product-card" tabindex="0">
-      <img src="https://via.placeholder.com/200x150?text=Snacks" alt="Snacks" />
-      <h3>Snacks</h3>
-      <p>Wide range of tasty and crispy snacks.</p>
-      <button onclick="addToCart('Snacks')">Add to Cart</button>
-    </div>
-    <div class="product-card" tabindex="0">
-      <img src="https://via.placeholder.com/200x150?text=Dairy" alt="Dairy" />
-      <h3>Dairy Products</h3>
-      <p>Milk, cheese, butter and more from trusted brands.</p>
-      <button onclick="addToCart('Dairy Products')">Add to Cart</button>
-    </div>
-    <div class="product-card" tabindex="0">
-      <img src="https://via.placeholder.com/200x150?text=Bakery" alt="Bakery" />
-      <h3>Bakery</h3>
-      <p>Freshly baked breads, cakes, and pastries.</p>
-      <button onclick="addToCart('Bakery')">Add to Cart</button>
-    </div>
-  </section>
+</section>
 
-  <!-- Cart dropdown -->
-  <div id="cartDropdown" role="region" aria-live="polite" aria-label="Shopping cart contents">
+<div id="cartDropdown">
     <h2>Your Cart</h2>
-    <ul id="cartItems" tabindex="0" aria-relevant="additions removals"></ul>
+    <ul id="cartItems"></ul>
     <p class="total-items"><strong>Total Items:</strong> <span id="cartCountDropdown">0</span></p>
     <button id="checkoutBtn" onclick="showForm()">Checkout with Razorpay</button>
-  </div>
+</div>
 
-  <!-- Info Form Popup -->
-  <div id="infoForm" role="dialog" aria-modal="true" aria-labelledby="formTitle" tabindex="-1">
-    <h3 id="formTitle">Shipping & Personal Info</h3>
+<div id="infoForm">
+    <h3>Shipping & Personal Info</h3>
     <form id="shippingForm" onsubmit="event.preventDefault(); proceedCheckout();">
-      <label for="fullName">Full Name *</label>
-      <input type="text" id="fullName" name="fullName" required autocomplete="name" />
-
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required autocomplete="email" />
-
-      <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="phone" required autocomplete="tel" pattern="[0-9]{7,15}" title="Enter a valid phone number" />
-
-      <label for="address">Shipping Address *</label>
-      <textarea id="address" name="address" required autocomplete="street-address"></textarea>
-
-      <div class="buttons">
-        <button type="button" id="formCancel" onclick="hideForm()">Cancel</button>
-        <button type="submit" id="formSubmit">Pay Now</button>
-      </div>
+        <label for="fullName">Full Name *</label>
+        <input type="text" id="fullName" required />
+        <label for="email">Email *</label>
+        <input type="email" id="email" required />
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" required pattern="[0-9]{7,15}" />
+        <label for="address">Shipping Address *</label>
+        <textarea id="address" required></textarea>
+        <button type="button" onclick="hideForm()">Cancel</button>
+        <button type="submit">Pay Now</button>
     </form>
-  </div>
+</div>
 
-  <footer>
+<footer>
     &copy; 2025 Well Mart Supermarket. All rights reserved.
-  </footer>
+</footer>
 
-  <!-- Razorpay script -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+let cart = [];
 
-  <script>
-    let cart = [];
+function addToCart(productName, price) {
+    cart.push({ name: productName, price: price });
+    updateCartDisplay();
+}
 
-    function addToCart(productName) {
-      cart.push(productName);
-      updateCartDisplay();
-    }
+function updateCartDisplay() {
+    const cartCount = document.getElementById("cartCount");
+    const cartCountDropdown = document.getElementById("cartCountDropdown");
+    const cartItems = document.getElementById("cartItems");
 
-    function updateCartDisplay() {
-      const cartCount = document.getElementById("cartCount");
-      const cartCountDropdown = document.getElementById("cartCountDropdown");
-      const cartItems = document.getElementById("cartItems");
+    cartCount.textContent = cart.length;
+    cartCountDropdown.textContent = cart.length;
 
-      cartCount.textContent = cart.length;
-      cartCountDropdown.textContent = cart.length;
-
-      cartItems.innerHTML = "";
-
-      if (cart.length === 0) {
+    cartItems.innerHTML = "";
+    if (cart.length === 0) {
         cartItems.innerHTML = "<li>Your cart is empty.</li>";
-      } else {
-        // Count quantity of each item
+    } else {
+        let total = 0;
         const counts = cart.reduce((acc, item) => {
-          acc[item] = (acc[item] || 0) + 1;
-          return acc;
+            acc[item.name] = acc[item.name] || { qty: 0, price: item.price };
+            acc[item.name].qty += 1;
+            return acc;
         }, {});
-        for (const [item, qty] of Object.entries(counts)) {
-          const li = document.createElement("li");
-          li.textContent = `${item} x ${qty}`;
-          cartItems.appendChild(li);
+        for (const [item, data] of Object.entries(counts)) {
+            const li = document.createElement("li");
+            li.textContent = `${item} x ${data.qty} - ₹${data.price * data.qty}`;
+            cartItems.appendChild(li);
+            total += data.price * data.qty;
         }
-      }
+        const liTotal = document.createElement("li");
+        liTotal.innerHTML = `<strong>Total: ₹${total}</strong>`;
+        cartItems.appendChild(liTotal);
     }
+}
 
-    // Cart dropdown toggle with animation
-    function toggleCart() {
-      const dropdown = document.getElementById("cartDropdown");
-      if (dropdown.classList.contains("show")) {
-        dropdown.classList.remove("show");
-        setTimeout(() => (dropdown.style.display = "none"), 300);
-      } else {
-        dropdown.style.display = "block";
-        setTimeout(() => dropdown.classList.add("show"), 10);
-      }
-    }
+function toggleCart() {
+    const dropdown = document.getElementById("cartDropdown");
+    dropdown.classList.toggle("show");
+}
 
-    // Search products filter
-    function searchProducts() {
-      const input = document.getElementById("searchInput");
-      const filter = input.value.toLowerCase();
-      const products = document.querySelectorAll(".product-card");
-
-      products.forEach((product) => {
-        const name = product.querySelector("h3").textContent.toLowerCase();
-        const desc = product.querySelector("p").textContent.toLowerCase();
-
-        if (name.includes(filter) || desc.includes(filter)) {
-          product.style.display = "flex";
-          product.style.opacity = "1";
-          product.style.transition = "opacity 0.3s ease";
-        } else {
-          product.style.opacity = "0";
-          setTimeout(() => {
-            product.style.display = "none";
-          }, 300);
-        }
-      });
-    }
-
-    // Show form popup with animation
-    function showForm() {
-      if (cart.length === 0) {
+function showForm() {
+    if (cart.length === 0) {
         alert("Your cart is empty!");
         return;
-      }
-      const form = document.getElementById("infoForm");
-      form.style.display = "block";
-      setTimeout(() => form.classList.add("show"), 10);
     }
+    document.getElementById("infoForm").style.display = "block";
+}
 
-    // Hide form popup
-    function hideForm() {
-      const form = document.getElementById("infoForm");
-      form.classList.remove("show");
-      setTimeout(() => (form.style.display = "none"), 400);
-    }
+function hideForm() {
+    document.getElementById("infoForm").style.display = "none";
+}
 
-    // Proceed to Razorpay checkout after form validation
-    function proceedCheckout() {
-      const fullName = document.getElementById("fullName").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const address = document.getElementById("address").value.trim();
+function proceedCheckout() {
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
 
-      if (!fullName || !email || !phone || !address) {
+    if (!fullName || !email || !phone || !address) {
         alert("Please fill in all required fields.");
         return;
-      }
+    }
 
-      // You can add more validation if needed here (email format, phone pattern)
+    const totalAmount = cart.reduce((sum, item) => sum + item.price, 0) * 100;
 
-      const options = {
-        key: "YOUR_RAZORPAY_KEY_HERE", // Replace with your Razorpay key
-        amount: cart.length * 100 * 100, // Amount in paise (e.g. ₹100 per item)
+    const options = {
+        key: "YOUR_RAZORPAY_KEY_HERE",
+        amount: totalAmount,
         currency: "INR",
         name: "Well Mart",
         description: "Supermarket Purchase",
         handler: function (response) {
-          alert(
-            "Payment successful! Payment ID: " + response.razorpay_payment_id
-          );
-
-          // Optionally send order info and user data to your backend here
-
-          cart = [];
-          updateCartDisplay();
-
-          hideForm();
-          const dropdown = document.getElementById("cartDropdown");
-          dropdown.classList.remove("show");
-          setTimeout(() => (dropdown.style.display = "none"), 300);
+            alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+            cart = [];
+            updateCartDisplay();
+            hideForm();
+            toggleCart();
         },
         prefill: {
-          name: fullName,
-          email: email,
-          contact: phone,
+            name: fullName,
+            email: email,
+            contact: phone,
         },
         theme: {
-          color: "#f44336",
+            color: "#f44336",
         },
-      };
+    };
+    const rzp = new Razorpay(options);
+    rzp.open();
+}
 
-      const rzp = new Razorpay(options);
-      rzp.open();
-    }
+updateCartDisplay();
+</script>
 
-    // Close cart dropdown if clicking outside
-    window.addEventListener("click", (e) => {
-      const cartDropdown = document.getElementById("cartDropdown");
-      const cartBtn = document.getElementById("cartBtn");
-      const infoForm = document.getElementById("infoForm");
-
-      if (
-        cartDropdown.classList.contains("show") &&
-        !cartDropdown.contains(e.target) &&
-        e.target !== cartBtn
-      ) {
-        cartDropdown.classList.remove("show");
-        setTimeout(() => (cartDropdown.style.display = "none"), 300);
-      }
-
-      // Close form if clicked outside of it
-      if (
-        infoForm.classList.contains("show") &&
-        !infoForm.contains(e.target) &&
-        e.target.id !== "checkoutBtn"
-      ) {
-        hideForm();
-      }
-    });
-
-    // Initialize empty cart display
-    updateCartDisplay();
-  </script>
 </body>
 </html>
