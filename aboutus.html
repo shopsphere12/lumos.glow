@@ -6,10 +6,10 @@
   <title>About Us | Well Mart</title>
   <style>
     :root {
-      --primary-color: #4CAF50;
-      --secondary-color: #f0f4f8;
+      --primary-color: #c62828; /* Strong red */
+      --secondary-color: #ffffff; /* White */
       --text-color: #333;
-      --accent-color: #2e7d32;
+      --accent-color: #b71c1c; /* Darker red */
     }
 
     body {
@@ -44,15 +44,15 @@
     }
 
     h2 {
-      color: var(--accent-color);
+      color: var(--primary-color);
     }
 
     .mission, .team {
       margin-bottom: 50px;
-      background: white;
+      background: #fff;
       border-radius: 12px;
       padding: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
 
     .team-members {
@@ -64,10 +64,10 @@
 
     .member {
       text-align: center;
-      background-color: #fff;
+      background-color: var(--secondary-color);
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 10px rgba(198, 40, 40, 0.15);
       transition: transform 0.2s ease;
     }
 
@@ -81,6 +81,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 15px;
+      border: 3px solid var(--primary-color);
     }
 
     footer {
@@ -108,14 +109,14 @@
 
   <header>
     <h1>About Well Mart</h1>
-    <p>Healthy Living Starts Here</p>
+    <p>Redefining Convenience & Care</p>
   </header>
 
   <main>
     <section class="mission">
       <h2>Our Mission</h2>
       <p>
-        Well Mart is committed to delivering quality, organic, and affordable groceries and wellness products to every household. We empower healthy lifestyles through sustainable sourcing, exceptional customer care, and community-driven values.
+        Well Mart is your trusted store for quality essentials. We’re committed to providing affordable, fresh, and reliable products with a focus on health, convenience, and exceptional customer service.
       </p>
     </section>
 
