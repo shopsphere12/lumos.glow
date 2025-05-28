@@ -2,89 +2,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Well Mart Supermarket</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Well Mart Supermarket</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header>
-    <div class="logo-title" onclick="window.location.reload()">
-        <img src="logo.png" alt="Well Mart Logo" />
-        <h1>Well Mart</h1>
-    </div>
-    <button id="cartBtn" onclick="toggleCart()" aria-label="Toggle Cart">
-        🛒 Cart <span id="cartCount">0</span>
-    </button>
+  <div class="logo-title" onclick="window.location.reload()">
+    <img src="logo.png" alt="Well Mart Logo" />
+    <h1>Well Mart</h1>
+  </div>
+  <button id="cartBtn" onclick="toggleCart()">🛒 Cart <span id="cartCount">0</span></button>
 </header>
 
 <nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Offers</a>
-    <a href="#">Contact</a>
-    <a href="#">About Us</a>
+  <a href="#">Home</a>
+  <a href="#">Products</a>
+  <a href="#">Offers</a>
+  <a href="#">Contact</a>
+  <a href="#">About Us</a>
 </nav>
 
 <section class="hero">
-    <h2>Welcome to Well Mart!</h2>
-    <p>Your one-stop shop for all your grocery needs.</p>
+  <h2>Welcome to Well Mart!</h2>
+  <p>Your one-stop shop for all your grocery needs.</p>
 </section>
 
 <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="searchProducts()" />
+  <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="searchProducts()" />
 </div>
 
 <section class="products" id="productList">
-    <div class="product-card" tabindex="0">
-        <img src="https://via.placeholder.com/200x150?text=Fruits" alt="Fresh Fruits" />
-        <h3>Fresh Fruits</h3>
-        <p>Healthy and delicious seasonal fruits.</p>
-        <p class="price">₹100</p>
-        <button onclick="addToCart('Fresh Fruits', 100)">Add to Cart</button>
-    </div>
-    <div class="product-card" tabindex="0">
-        <img src="https://via.placeholder.com/200x150?text=Vegetables" alt="Vegetables" />
-        <h3>Vegetables</h3>
-        <p>Locally sourced organic vegetables.</p>
-        <p class="price">₹80</p>
-        <button onclick="addToCart('Vegetables', 80)">Add to Cart</button>
-    </div>
-    <div class="product-card" tabindex="0">
-        <img src="https://via.placeholder.com/200x150?text=Beverages" alt="Beverages" />
-        <h3>Beverages</h3>
-        <p>Refreshing drinks and juices for all occasions.</p>
-        <p class="price">₹60</p>
-        <button onclick="addToCart('Beverages', 60)">Add to Cart</button>
-    </div>
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x150?text=Fruits" alt="Fresh Fruits" />
+    <h3>Fresh Fruits</h3>
+    <p>Healthy and delicious seasonal fruits.</p>
+    <p class="price">₹100</p>
+    <button onclick="addToCart('Fresh Fruits', 100)">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x150?text=Vegetables" alt="Vegetables" />
+    <h3>Vegetables</h3>
+    <p>Locally sourced organic vegetables.</p>
+    <p class="price">₹80</p>
+    <button onclick="addToCart('Vegetables', 80)">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x150?text=Beverages" alt="Beverages" />
+    <h3>Beverages</h3>
+    <p>Refreshing drinks and juices for all occasions.</p>
+    <p class="price">₹60</p>
+    <button onclick="addToCart('Beverages', 60)">Add to Cart</button>
+  </div>
 </section>
 
 <div id="cartDropdown">
-    <h2>Your Cart</h2>
-    <ul id="cartItems"></ul>
-    <p class="total-items"><strong>Total Items:</strong> <span id="cartCountDropdown">0</span></p>
-    <button id="checkoutBtn" onclick="showForm()">Checkout with Razorpay</button>
+  <h2>Your Cart</h2>
+  <ul id="cartItems"></ul>
+  <p class="total-items"><strong>Total Items:</strong> <span id="cartCountDropdown">0</span></p>
+  <button onclick="showForm()">Checkout with Razorpay</button>
 </div>
 
 <div id="infoForm">
-    <h3>Shipping & Personal Info</h3>
-    <form id="shippingForm" onsubmit="event.preventDefault(); proceedCheckout();">
-        <label for="fullName">Full Name *</label>
-        <input type="text" id="fullName" required />
-        <label for="email">Email *</label>
-        <input type="email" id="email" required />
-        <label for="phone">Phone Number *</label>
-        <input type="tel" id="phone" required pattern="[0-9]{7,15}" />
-        <label for="address">Shipping Address *</label>
-        <textarea id="address" required></textarea>
-        <button type="button" onclick="hideForm()">Cancel</button>
-        <button type="submit">Pay Now</button>
-    </form>
+  <h3>Shipping & Personal Info</h3>
+  <form id="shippingForm" onsubmit="event.preventDefault(); proceedCheckout();">
+    <label for="fullName">Full Name *</label>
+    <input type="text" id="fullName" required />
+    <label for="email">Email *</label>
+    <input type="email" id="email" required />
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" required pattern="[0-9]{7,15}" />
+    <label for="address">Shipping Address *</label>
+    <textarea id="address" required></textarea>
+    <button type="button" onclick="hideForm()">Cancel</button>
+    <button type="submit">Pay Now</button>
+  </form>
 </div>
 
 <footer>
-    &copy; 2025 Well Mart Supermarket. All rights reserved.
+  &copy; 2025 Well Mart Supermarket. All rights reserved.
 </footer>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -92,98 +90,111 @@
 let cart = [];
 
 function addToCart(productName, price) {
-    cart.push({ name: productName, price: price });
-    updateCartDisplay();
+  cart.push({ name: productName, price: price });
+  updateCartDisplay();
 }
 
 function updateCartDisplay() {
-    const cartCount = document.getElementById("cartCount");
-    const cartCountDropdown = document.getElementById("cartCountDropdown");
-    const cartItems = document.getElementById("cartItems");
+  const cartCount = document.getElementById("cartCount");
+  const cartCountDropdown = document.getElementById("cartCountDropdown");
+  const cartItems = document.getElementById("cartItems");
 
-    cartCount.textContent = cart.length;
-    cartCountDropdown.textContent = cart.length;
+  cartCount.textContent = cart.length;
+  cartCountDropdown.textContent = cart.length;
 
-    cartItems.innerHTML = "";
-    if (cart.length === 0) {
-        cartItems.innerHTML = "<li>Your cart is empty.</li>";
-    } else {
-        let total = 0;
-        const counts = cart.reduce((acc, item) => {
-            acc[item.name] = acc[item.name] || { qty: 0, price: item.price };
-            acc[item.name].qty += 1;
-            return acc;
-        }, {});
-        for (const [item, data] of Object.entries(counts)) {
-            const li = document.createElement("li");
-            li.textContent = `${item} x ${data.qty} - ₹${data.price * data.qty}`;
-            cartItems.appendChild(li);
-            total += data.price * data.qty;
-        }
-        const liTotal = document.createElement("li");
-        liTotal.innerHTML = `<strong>Total: ₹${total}</strong>`;
-        cartItems.appendChild(liTotal);
+  cartItems.innerHTML = "";
+  if (cart.length === 0) {
+    cartItems.innerHTML = "<li>Your cart is empty.</li>";
+  } else {
+    let total = 0;
+    const counts = cart.reduce((acc, item) => {
+      acc[item.name] = acc[item.name] || { qty: 0, price: item.price };
+      acc[item.name].qty += 1;
+      return acc;
+    }, {});
+    for (const [item, data] of Object.entries(counts)) {
+      const li = document.createElement("li");
+      li.textContent = `${item} x ${data.qty} - ₹${data.price * data.qty}`;
+      cartItems.appendChild(li);
+      total += data.price * data.qty;
     }
+    const liTotal = document.createElement("li");
+    liTotal.innerHTML = `<strong>Total: ₹${total}</strong>`;
+    cartItems.appendChild(liTotal);
+  }
 }
 
 function toggleCart() {
-    const dropdown = document.getElementById("cartDropdown");
-    dropdown.classList.toggle("show");
+  const dropdown = document.getElementById("cartDropdown");
+  dropdown.classList.toggle("show");
 }
 
 function showForm() {
-    if (cart.length === 0) {
-        alert("Your cart is empty!");
-        return;
-    }
-    document.getElementById("infoForm").style.display = "block";
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+  document.getElementById("infoForm").style.display = "block";
 }
 
 function hideForm() {
-    document.getElementById("infoForm").style.display = "none";
+  document.getElementById("infoForm").style.display = "none";
+}
+
+function searchProducts() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const products = document.querySelectorAll(".product-card");
+  products.forEach((product) => {
+    const title = product.querySelector("h3").textContent.toLowerCase();
+    const desc = product.querySelector("p").textContent.toLowerCase();
+    if (title.includes(input) || desc.includes(input)) {
+      product.style.display = "block";
+    } else {
+      product.style.display = "none";
+    }
+  });
 }
 
 function proceedCheckout() {
-    const fullName = document.getElementById("fullName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("address").value.trim();
+  const fullName = document.getElementById("fullName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
 
-    if (!fullName || !email || !phone || !address) {
-        alert("Please fill in all required fields.");
-        return;
-    }
+  if (!fullName || !email || !phone || !address) {
+    alert("Please fill in all required fields.");
+    return;
+  }
 
-    const totalAmount = cart.reduce((sum, item) => sum + item.price, 0) * 100;
+  const totalAmount = cart.reduce((sum, item) => sum + item.price, 0) * 100;
 
-    const options = {
-        key: "YOUR_RAZORPAY_KEY_HERE",
-        amount: totalAmount,
-        currency: "INR",
-        name: "Well Mart",
-        description: "Supermarket Purchase",
-        handler: function (response) {
-            alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
-            cart = [];
-            updateCartDisplay();
-            hideForm();
-            toggleCart();
-        },
-        prefill: {
-            name: fullName,
-            email: email,
-            contact: phone,
-        },
-        theme: {
-            color: "#f44336",
-        },
-    };
-    const rzp = new Razorpay(options);
-    rzp.open();
+  const options = {
+    key: "rzp_test_1DP5mmOlF5G5ag", // Sample Razorpay test key
+    amount: totalAmount,
+    currency: "INR",
+    name: "Well Mart",
+    description: "Supermarket Purchase",
+    handler: function (response) {
+      alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+      cart = [];
+      updateCartDisplay();
+      hideForm();
+      toggleCart();
+    },
+    prefill: {
+      name: fullName,
+      email: email,
+      contact: phone,
+    },
+    theme: {
+      color: "#f44336",
+    },
+  };
+  const rzp = new Razorpay(options);
+  rzp.open();
 }
 
 updateCartDisplay();
 </script>
-
 </body>
 </html>
