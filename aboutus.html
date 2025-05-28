@@ -3,114 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us | ShopSphere</title>
+  <title>About Us | Well Mart</title>
   <style>
+    :root {
+      --primary-color: #4CAF50;
+      --secondary-color: #f0f4f8;
+      --text-color: #333;
+      --accent-color: #2e7d32;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f7f9fc;
-      color: #333;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
     }
 
     header {
-      background-color: #2b6cb0;
+      background-color: var(--primary-color);
       color: white;
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
+      border-bottom: 5px solid var(--accent-color);
     }
 
     header h1 {
+      font-size: 2.8em;
       margin: 0;
-      font-size: 2.5em;
     }
 
-    section {
-      max-width: 1000px;
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    main {
+      max-width: 1100px;
       margin: 40px auto;
       padding: 0 20px;
     }
 
     h2 {
-      color: #2b6cb0;
+      color: var(--accent-color);
     }
 
     .mission, .team {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .team-members {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
     }
 
     .member {
-      background-color: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       text-align: center;
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease;
+    }
+
+    .member:hover {
+      transform: translateY(-5px);
     }
 
     .member img {
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     footer {
-      background-color: #2b6cb0;
+      background-color: var(--primary-color);
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
+      margin-top: 40px;
+      border-top: 5px solid var(--accent-color);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .member img {
+        width: 70px;
+        height: 70px;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>About ShopSphere</h1>
-    <p>Your one-stop eco-friendly shopping destination</p>
+    <h1>About Well Mart</h1>
+    <p>Healthy Living Starts Here</p>
   </header>
 
-  <section class="mission">
-    <h2>Our Mission</h2>
-    <p>
-      At ShopSphere, our mission is to revolutionize online shopping by providing a platform that blends style, sustainability, and simplicity. We are dedicated to offering high-quality, eco-conscious products while supporting local artisans and global green initiatives.
-    </p>
-  </section>
+  <main>
+    <section class="mission">
+      <h2>Our Mission</h2>
+      <p>
+        Well Mart is committed to delivering quality, organic, and affordable groceries and wellness products to every household. We empower healthy lifestyles through sustainable sourcing, exceptional customer care, and community-driven values.
+      </p>
+    </section>
 
-  <section class="team">
-    <h2>Meet the Team</h2>
-    <div class="team-members">
-      <div class="member">
-        <img src="https://via.placeholder.com/100" alt="Team Member 1">
-        <h3>Jane Doe</h3>
-        <p>Founder & CEO</p>
+    <section class="team">
+      <h2>Meet Our Team</h2>
+      <div class="team-members">
+        <div class="member">
+          <img src="https://via.placeholder.com/100" alt="CEO">
+          <h3>Sara Green</h3>
+          <p>Founder & CEO</p>
+        </div>
+        <div class="member">
+          <img src="https://via.placeholder.com/100" alt="Manager">
+          <h3>Liam Patel</h3>
+          <p>Operations Manager</p>
+        </div>
+        <div class="member">
+          <img src="https://via.placeholder.com/100" alt="Designer">
+          <h3>Ava Chen</h3>
+          <p>Creative Lead</p>
+        </div>
+        <div class="member">
+          <img src="https://via.placeholder.com/100" alt="Tech Lead">
+          <h3>Noah Wright</h3>
+          <p>Tech Lead</p>
+        </div>
       </div>
-      <div class="member">
-        <img src="https://via.placeholder.com/100" alt="Team Member 2">
-        <h3>John Smith</h3>
-        <p>Head of Design</p>
-      </div>
-      <div class="member">
-        <img src="https://via.placeholder.com/100" alt="Team Member 3">
-        <h3>Emily Carter</h3>
-        <p>Marketing Lead</p>
-      </div>
-      <div class="member">
-        <img src="https://via.placeholder.com/100" alt="Team Member 4">
-        <h3>Raj Mehra</h3>
-        <p>Lead Developer</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 ShopSphere. All rights reserved.</p>
+    <p>&copy; 2025 Well Mart. All rights reserved.</p>
   </footer>
 
 </body>
