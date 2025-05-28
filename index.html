@@ -332,7 +332,8 @@ footer {
 
 <div id="infoForm">
   <h3>Shipping & Personal Info</h3>
-  <form id="shippingForm" onsubmit="event.preventDefault(); proceedCheckout();">
+    <form action="https://api.web3forms.com/submit" method="POST" id="shippingForm" onsubmit="event.preventDefault(); proceedCheckout();">
+    <input type="hidden" name="access_key" value="0f6b356e-b11f-4713-916f-5ef8bead4166">
     <label for="fullName">Full Name *</label>
     <input type="text" id="fullName" required />
     <label for="email">Email *</label>
