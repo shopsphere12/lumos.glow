@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Well Mart</title>
+  <style>
+    :root {
+      --primary-color: #c62828; /* Strong red */
+      --secondary-color: #ffffff; /* White */
+      --text-color: #333;
+      --accent-color: #b71c1c; /* Darker red */
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      border-bottom: 5px solid var(--accent-color);
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: var(--primary-color);
+    }
+
+    .mission, .team {
+      margin-bottom: 50px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .member {
+      text-align: center;
+      background-color: var(--secondary-color);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(198, 40, 40, 0.15);
+      transition: transform 0.2s ease;
+    }
+
+    .member:hover {
+      transform: translateY(-5px);
+    }
+
+    .member img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid var(--primary-color);
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+      border-top: 5px solid var(--accent-color);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .member img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>About Well Mart</h1>
+    <p>Redefining Convenience & Care</p>
+  </header>
+
+  <main>
+    <section class="mission">
+      <h2>Our Mission</h2>
+      <p>
+        Well Mart is your trusted store for quality essentials. We’re committed to providing affordable, fresh, and reliable products with a focus on health, convenience, and exceptional customer service.
+      </p>
+    </section>
+
+    <section class="team">
+      <h2>Meet Our Team</h2>
+      <div class="team-members">
+        <div class="member">
+          <img src="https://via.placeholder.com/100" alt="CEO">
+          <h3>Sara Green</h3>
+          <p>Founder & CEO</p>
+        </div>
+        <div class="member">
+          <img src="https://via.placeholder.com/100" alt="Manager">
+          <h3>Liam Patel</h3>
+          <p>Operations Manager</p>
+        </div>
+        <div class="member">
+          <img src="https://via.placeholder.com/100" alt="Designer">
+          <h3>Ava Chen</h3>
+          <p>Creative Lead</p>
+        </div>
+        <div class="member">
+          <img src="https://via.placeholder.com/100" alt="Tech Lead">
+          <h3>Noah Wright</h3>
+          <p>Tech Lead</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Well Mart. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
