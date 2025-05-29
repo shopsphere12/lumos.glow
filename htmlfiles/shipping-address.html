@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shipping Info</title>
+  <style>
+    body {
+      background-color: #fefefe;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 5% auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #e53935;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    form label {
+      text-align: left;
+      margin: 0.5rem 0 0.25rem;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      background-color: #e53935;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shipping Details</h1>
+    <form action="https://api.web3forms.com/submit" method="POST" id="shippingForm">
+      <!-- Required for Web3Forms -->
+      <input type="hidden" name="access_key" value="0f6b356e-b11f-4713-916f-5ef8bead4166">
+      <input type="hidden" name="redirect" value="http://localhost/work/payment.html">
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Full Name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+
+      <label for="address">Shipping Address</label>
+      <textarea id="address" name="address" placeholder="Shipping Address" required></textarea>
+
+      <button type="submit">Continue to Payment</button>
+    </form>
+  </div>
+
+  <script>
+    // Save shipping details to localStorage when form is submitted
+    document.getElementById('shippingForm').addEventListener('submit', function () {
+      const details = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value
+      };
+      localStorage.setItem('shippingDetails', JSON.stringify(details));
+    });
+  </script>
+</body>
+</html>
